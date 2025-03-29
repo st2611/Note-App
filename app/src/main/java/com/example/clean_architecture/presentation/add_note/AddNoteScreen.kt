@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -74,7 +73,7 @@ fun AddNoteScreen(
                 label = {
                     Text("Title")
                 },
-                textStyle = MaterialTheme.typography.displayMedium,
+                textStyle = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.fillMaxWidth()
             )
 
@@ -88,7 +87,7 @@ fun AddNoteScreen(
                 label = {
                     Text("Content")
                 },
-                textStyle = MaterialTheme.typography.displaySmall,
+                textStyle = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.fillMaxSize().padding(bottom = 64.dp)
             )
 

@@ -73,7 +73,7 @@ fun UpdateNoteScreen(
                 label = {
                     Text("Title")
                 },
-                textStyle = MaterialTheme.typography.displayMedium,
+                textStyle = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.fillMaxWidth()
             )
 
@@ -87,7 +87,7 @@ fun UpdateNoteScreen(
                 label = {
                     Text("Content")
                 },
-                textStyle = MaterialTheme.typography.displaySmall,
+                textStyle = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.fillMaxSize().padding(bottom = 64.dp)
             )
         }

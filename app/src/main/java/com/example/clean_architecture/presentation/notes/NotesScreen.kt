@@ -56,6 +56,7 @@ fun NotesScreen(
         },
         snackbarHost = { SnackbarHost(snackBarHostState) }
     ) {
+
         Spacer(modifier = Modifier.height(16.dp))
         LazyColumn(
             modifier = Modifier.fillMaxHeight()
