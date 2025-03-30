@@ -7,3 +7,4 @@ data class NoteUseCases(
     val getNotes: GetNotes,
     val getNote: GetNote
 )
+

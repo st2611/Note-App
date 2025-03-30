@@ -14,7 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AddNoteViewModel @Inject constructor(
     private val noteUseCases: NoteUseCases
-): ViewModel() {
+) : ViewModel() {
     private val _title = mutableStateOf(" ")
     val title: State<String> = _title
 
@@ -26,9 +26,11 @@ class AddNoteViewModel @Inject constructor(
             is AddEditNoteEvent.EnteredTitle -> {
                 _title.value = event.title
             }
+
             is AddEditNoteEvent.EnteredContent -> {
                 _content.value = event.content
             }
+
             is AddEditNoteEvent.SaveNote -> {
                 viewModelScope.launch {
                     noteUseCases.addNote(

@@ -38,17 +38,17 @@ fun AddNoteScreen(
     val snackBarHostState = remember { SnackbarHostState() }
     val context = LocalContext.current
 
-    Scaffold (
+    Scaffold(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
                     if (title.isBlank()) {
-                        Toast.makeText(context,"Title is empty", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Title is empty", Toast.LENGTH_SHORT).show()
                         return@FloatingActionButton
                     }
 
                     if (content.isBlank()) {
-                        Toast.makeText(context,"Content is empty", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Content is empty", Toast.LENGTH_SHORT).show()
                         return@FloatingActionButton
                     }
 
@@ -62,7 +62,7 @@ fun AddNoteScreen(
         },
         snackbarHost = { SnackbarHost(snackBarHostState) }
     ) {
-        Column (
+        Column(
             modifier = Modifier.padding(8.dp)
         ) {
             OutlinedTextField(
@@ -88,7 +88,9 @@ fun AddNoteScreen(
                     Text("Content")
                 },
                 textStyle = MaterialTheme.typography.bodySmall,
-                modifier = Modifier.fillMaxSize().padding(bottom = 64.dp)
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(bottom = 64.dp)
             )
 
         }

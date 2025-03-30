@@ -18,7 +18,7 @@ import javax.inject.Inject
 class UpdateNoteViewModel @Inject constructor(
     private val noteUseCases: NoteUseCases,
     savedSateHandle: SavedStateHandle
-): ViewModel() {
+) : ViewModel() {
 
     init {
         val argument = UpdateNoteArgument().from(savedSateHandle)
@@ -45,9 +45,11 @@ class UpdateNoteViewModel @Inject constructor(
             is AddEditNoteEvent.EnteredTitle -> {
                 _title.value = event.title
             }
+
             is AddEditNoteEvent.EnteredContent -> {
                 _content.value = event.content
             }
+
             is AddEditNoteEvent.SaveNote -> {
                 viewModelScope.launch {
                     noteUseCases.updateNote(

@@ -14,6 +14,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.SnackbarResult
@@ -22,8 +23,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.example.clean_architecture.presentation.navigation.Screen
 import com.example.clean_architecture.presentation.navigation.UpdateNoteArgument
 import kotlinx.coroutines.launch
@@ -64,20 +65,22 @@ fun NotesScreen(
             items(notes) { note ->
                 NoteItem(
                     note = note,
-                    modifier = Modifier.fillMaxWidth().clickable {
-                        navController.navigate(
-                            Screen.UpdateNoteScreen.setParam(
-                                UpdateNoteArgument(noteId = note.id)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            navController.navigate(
+                                Screen.UpdateNoteScreen.setParam(
+                                    UpdateNoteArgument(noteId = note.id)
+                                )
                             )
-                        )
-                    }
-                    ,
+                        },
                     onDelete = {
                         notesViewModel.onEvent(NoteEvent.DeleteNote(note))
                         scope.launch {
                             val result = snackBarHostState.showSnackbar(
                                 "Note Deleted",
-                                "Undo"
+                                "Undo",
+                                duration = SnackbarDuration.Short
                             )
                             if (result == SnackbarResult.ActionPerformed) {
                                 notesViewModel.onEvent(NoteEvent.RestoreNote)
